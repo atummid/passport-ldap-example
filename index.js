@@ -106,7 +106,12 @@ app.get('/logout', (req, res) => {
 
 // the login page
 app.get('/', function (req, res) {
+  let user = req.user
+  if (user) {
+    res.redirect('/success');    
+  }else{
   res.render('index', { title: 'Hey', message: 'Hello there!' })
+  }
 })
 
 // Start server
